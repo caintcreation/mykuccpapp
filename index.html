@@ -22,8 +22,7 @@
 
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml"
-        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='78' font-size='78'><i class="
-        fa-solid fa-building-columns"></i></text></svg>">
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='80' font-size='80'>🎓</text></svg>">
 
     <!-- FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -33,13 +32,13 @@
 
 <body>
 
-    <!-- Particles Background -->
-
-
     <!-- ========== HEADER / NAV ========== -->
-    <header>
+    <header id="main-header">
         <div class="header-content">
-            <div class="logo"><i class="fa-solid fa-building-columns"></i> CAINT <span>Student&nbsp;Service</span></div>
+            <div class="logo">
+                <i class="fa-solid fa-building-columns"></i>
+                CAINT <span>Student&nbsp;Service</span>
+            </div>
 
             <nav id="nav-menu">
                 <a href="#home">Home</a>
@@ -57,7 +56,7 @@
                     <span id="theme-icon"><i class="fa-solid fa-moon"></i></span>
                 </button>
                 <a href="#apply" class="btn btn-primary nav-btn-desktop"
-                    style="padding:0.6rem 1.25rem;font-size:0.9rem;">Apply Now</a>
+                    style="padding:0.6rem 1.25rem;font-size:0.88rem;">Apply Now</a>
                 <button class="menu-toggle" id="menu-toggle" aria-label="Open menu">☰</button>
             </div>
         </div>
@@ -69,22 +68,35 @@
         <video autoplay loop muted playsinline class="hero-bg-video">
             <source src="video.mp4" type="video/mp4">
         </video>
-        <div class="video-overlay"></div>
+        <div class="video-overlay"
+            style="background: linear-gradient(135deg, rgba(10,22,40,0.65) 0%, rgba(15,42,92,0.55) 100%);"></div>
+
+        <!-- Decorative blobs -->
+        <div class="hero-blob hero-blob-1"></div>
+        <div class="hero-blob hero-blob-2"></div>
 
         <div class="container hero-content">
-            <div class="human-badge reveal" style="animation-delay: 0s;">👋 Welcome to CAINT! Trusted by 1,000+ students
+            <div class="human-badge reveal" style="animation-delay:0s;">
+                <i class="fa-solid fa-shield-halved"></i>
+                👋 Welcome to CAINT! Trusted by 1,000+ students
             </div>
-            <h1>Safe &amp; Trusted <span class="highlight">KUCCPS, HELB &amp; KRA</span> Application Support</h1>
+
+            <h1>Safe &amp; Trusted
+                <span class="highlight">KUCCPS, HELB &amp; KRA</span>
+                Application Support
+            </h1>
+
             <p class="hero-subtitle">Helping Form 4 leavers apply correctly — without scams. Professional, friendly
                 assistance from a verified student service based right here in Chuka.</p>
 
             <div class="hero-buttons">
-                <a href="#apply" class="btn btn-primary"><i class="fa-solid fa-paper-plane"></i> Start My
-                    Application</a>
+                <a href="#apply" class="btn btn-primary">
+                    <i class="fa-solid fa-paper-plane"></i> Start My Application
+                </a>
                 <a href="https://wa.me/254756963430?text=Hello%2C%20I%20would%20like%20help%20with%20my%20application."
-                    class="btn btn-whatsapp" target="_blank" rel="noopener" id="hero-whatsapp-btn"><i
-                        class="fa-brands fa-whatsapp"></i> Chat on
-                    WhatsApp</a>
+                    class="btn btn-ghost" target="_blank" rel="noopener" id="hero-whatsapp-btn">
+                    <i class="fa-brands fa-whatsapp"></i> Chat on WhatsApp
+                </a>
             </div>
 
             <div class="trust-badges">
@@ -94,7 +106,7 @@
                 </div>
                 <div class="badge">
                     <div class="badge-icon"><i class="fa-solid fa-building-columns"></i></div>
-                    <div class="badge-text">Student at Chuka University</div>
+                    <div class="badge-text">Chuka University</div>
                 </div>
                 <div class="badge">
                     <div class="badge-icon"><i class="fa-solid fa-lock"></i></div>
@@ -108,6 +120,30 @@
         </div>
     </section>
 
+    <!-- ========== STATS RIBBON ========== -->
+    <div class="stats-ribbon">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item reveal">
+                    <span class="stat-number">1,000+</span>
+                    <span class="stat-label">Students Helped</span>
+                </div>
+                <div class="stat-item reveal">
+                    <span class="stat-number">3</span>
+                    <span class="stat-label">Core Services</span>
+                </div>
+                <div class="stat-item reveal">
+                    <span class="stat-number">30 Min</span>
+                    <span class="stat-label">Response Time</span>
+                </div>
+                <div class="stat-item reveal">
+                    <span class="stat-number">100%</span>
+                    <span class="stat-label">Official Portals</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- ========== WHATSAPP COMMUNITY ========== -->
     <section class="community-banner reveal" id="community">
         <div class="container">
@@ -117,8 +153,8 @@
                     <p>Got questions? Want the latest updates on KUCCPS intake and HELB deadlines? Join our active
                         WhatsApp group to connect with us and other students.</p>
                 </div>
-                <a href="https://chat.whatsapp.com/CdO9bFlm5in5UT7GAlyNbq" class="btn btn-whatsapp-pulse community-btn"
-                    target="_blank" rel="noopener">
+                <a href="https://chat.whatsapp.com/CdO9bFlm5in5UT7GAlyNbq" class="btn-whatsapp-pulse" target="_blank"
+                    rel="noopener">
                     <i class="fa-brands fa-whatsapp"></i> Join WhatsApp Group
                 </a>
             </div>
@@ -128,6 +164,7 @@
     <!-- ========== 2. HOW IT WORKS ========== -->
     <section class="how-it-works alt-bg" id="how-it-works">
         <div class="container">
+            <div class="section-tag reveal"><i class="fa-solid fa-list-check"></i> Simple Process</div>
             <h2 class="reveal">How It Works</h2>
             <p class="section-subtitle reveal">A simple 3-step process — designed for students and parents who want it
                 done right.</p>
@@ -159,6 +196,7 @@
     <!-- ========== 3. SERVICES & PRICING ========== -->
     <section class="services" id="services">
         <div class="container">
+            <div class="section-tag reveal"><i class="fa-solid fa-tags"></i> Our Services</div>
             <h2 class="reveal">Services &amp; Pricing</h2>
             <p class="section-subtitle reveal">Choose the service that fits your needs. All applications are submitted
                 via official portals.</p>
@@ -237,39 +275,46 @@
     <!-- ========== 4. TRUST & PROOF ========== -->
     <section class="trust alt-bg" id="trust">
         <div class="container">
+            <div class="section-tag reveal"><i class="fa-solid fa-shield-halved"></i> Why Trust Us</div>
             <h2 class="reveal">Why Students Trust This Service</h2>
             <p class="section-subtitle reveal">Real results, real students, real proof.</p>
 
             <!-- Testimonials -->
             <div class="testimonials">
                 <div class="testimonial-card reveal">
-                    <div class="testimonial-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
-                            class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
-                            class="fa-solid fa-star"></i></div>
+                    <div class="testimonial-stars">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                    </div>
                     <p class="testimonial-text">"I was so confused about KUCCPS course selection, but CAINT guided me
                         step by step. I got placed at Chuka University to study Education — my first choice! Totally
                         legit and affordable."</p>
-                    <div class="testimonial-author">— Kevin Mwenda</div>
+                    <div class="testimonial-author">Kevin Mwenda</div>
                     <div class="testimonial-role">Form 4 Leaver, Tharaka Nithi County</div>
                 </div>
                 <div class="testimonial-card reveal">
-                    <div class="testimonial-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
-                            class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
-                            class="fa-solid fa-star"></i></div>
+                    <div class="testimonial-stars">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                    </div>
                     <p class="testimonial-text">"As a parent, I was very cautious about online services. CAINT was
                         transparent from the start — they showed me proof of my daughter's HELB submission and never
                         asked for any PIN. I recommend them to every parent."</p>
-                    <div class="testimonial-author">— Grace Njeri</div>
+                    <div class="testimonial-author">Grace Njeri</div>
                     <div class="testimonial-role">Parent, Embu County</div>
                 </div>
                 <div class="testimonial-card reveal">
-                    <div class="testimonial-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
-                            class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
-                            class="fa-solid fa-star"></i></div>
+                    <div class="testimonial-stars">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                    </div>
                     <p class="testimonial-text">"I needed my KRA PIN urgently to apply for an attachment. CAINT
                         delivered my PIN certificate in less than 3 hours. The Full Package was a great deal — saved me
                         money and stress!"</p>
-                    <div class="testimonial-author">— Brian Otieno</div>
+                    <div class="testimonial-author">Brian Otieno</div>
                     <div class="testimonial-role">TVET Student, Meru County</div>
                 </div>
             </div>
@@ -332,8 +377,7 @@
                     </div>
                     <div class="faq-answer">
                         <p><strong>Never.</strong> We will NEVER ask for your M-Pesa PIN, ATM PIN, or any password.
-                            Payment is made via standard M-Pesa transfers only. If anyone asks for your PIN claiming to
-                            be us, report them immediately.</p>
+                            Payment is made via standard M-Pesa transfers only.</p>
                     </div>
                 </div>
                 <div class="faq-item reveal">
@@ -343,8 +387,8 @@
                     </div>
                     <div class="faq-answer">
                         <p>If an application is rejected due to a portal or system issue, we will resubmit for free. If
-                            the rejection is due to ineligibility (e.g., missing grades), we will notify you immediately
-                            and discuss your options, including a partial refund.</p>
+                            the rejection is due to ineligibility, we will notify you immediately and discuss your
+                            options, including a partial refund.</p>
                     </div>
                 </div>
                 <div class="faq-item reveal">
@@ -354,8 +398,8 @@
                     </div>
                     <div class="faq-answer">
                         <p>Most applications are processed within 24–48 hours. You'll receive an initial response within
-                            30 minutes of submitting your details, and we'll keep you updated via WhatsApp throughout
-                            the process.</p>
+                            30 minutes of submitting your details, and we'll keep you updated via WhatsApp throughout.
+                        </p>
                     </div>
                 </div>
             </div>
@@ -365,283 +409,501 @@
     <!-- ========== 5. APPLICATION FORM ========== -->
     <section class="form-section" id="apply">
         <div class="container">
+            <div class="section-tag reveal" style="margin:0 auto 1rem; display:table;"><i
+                    class="fa-solid fa-paper-plane"></i> Apply Now</div>
             <h2 class="reveal">Start Your Application</h2>
             <p class="section-subtitle reveal">Fill in the form below and we'll get started within 30 minutes.</p>
 
             <div class="form-container reveal" id="form-area">
-                <!-- Progress -->
-                <div class="progress-wrapper">
-                    <div class="progress-steps">
-                        <span class="progress-step-label active">Select Service</span>
-                        <span class="progress-step-label">Personal Info</span>
-                        <span class="progress-step-label">Service Details</span>
-                        <span class="progress-step-label">Confirm</span>
-                    </div>
-                    <div class="progress-bar">
-                        <div class="progress-fill" id="progress-fill"></div>
-                    </div>
-                </div>
-
                 <div id="form-message" class="form-message"></div>
-
                 <form id="application-form" novalidate>
-                    <input type="hidden" id="selected-service" name="service">
 
-                    <!-- STEP 1: Select Service -->
-                    <div class="form-step active" data-step="0">
-                        <h3>Which service do you need?</h3>
-                        <div class="service-selector">
-                            <div class="service-option" data-service="kuccps">
-                                <div class="svc-icon"><i class="fa-solid fa-building-columns"></i></div>
-                                <div class="svc-label">KUCCPS</div>
+                    <!-- STEP 0: Service Selection -->
+                    <div class="form-step active" data-step-id="service">
+                        <h3>Select Service</h3>
+                        <p class="section-desc">Please select the application service you require.</p>
+
+                        <div class="service-cards">
+                            <div class="service-card" data-service="kuccps">
+                                <i class="fa-solid fa-building-columns"></i>
+                                <h4>KUCCPS Application</h4>
                             </div>
-                            <div class="service-option" data-service="helb">
-                                <div class="svc-icon"><i class="fa-solid fa-credit-card"></i></div>
-                                <div class="svc-label">HELB Loan</div>
+                            <div class="service-card" data-service="helb">
+                                <i class="fa-solid fa-credit-card"></i>
+                                <h4>HEF / HELB Funding</h4>
                             </div>
-                            <div class="service-option" data-service="kra">
-                                <div class="svc-icon"><i class="fa-solid fa-file-lines"></i></div>
-                                <div class="svc-label">KRA PIN</div>
+                            <div class="service-card" data-service="kra">
+                                <i class="fa-solid fa-file-lines"></i>
+                                <h4>KRA PIN Registration</h4>
                             </div>
-                            <div class="service-option" data-service="full-package">
-                                <div class="svc-icon"><i class="fa-solid fa-bullseye"></i></div>
-                                <div class="svc-label">Full Package</div>
+                            <div class="service-card popular" data-service="full">
+                                <span
+                                    style="position:absolute;top:-10px;right:-10px;background:var(--accent);color:#fff;padding:2px 8px;border-radius:12px;font-size:0.75rem;font-weight:700;">Best
+                                    Value</span>
+                                <i class="fa-solid fa-bullseye"></i>
+                                <h4>Full Student Package</h4>
                             </div>
                         </div>
                         <p class="field-error" id="service-error">Please select a service to continue.</p>
 
                         <div class="form-buttons">
                             <div></div>
-                            <button type="button" class="btn btn-primary btn-next">Next →</button>
+                            <button type="button" class="btn btn-primary" id="btn-start-app">
+                                Start Application <i class="fa-solid fa-arrow-right"></i>
+                            </button>
                         </div>
                     </div>
 
-                    <!-- STEP 2: Personal Details -->
-                    <div class="form-step" data-step="1">
-                        <h3>Your Personal Details</h3>
+                    <!-- Progress -->
+                    <div class="progress-wrapper" id="progress-wrapper" style="display:none;">
+                        <div class="progress-steps" id="progress-steps">
+                            <span class="progress-step-label active" data-step-id="personal">Personal Info</span>
+                            <span class="progress-step-label" data-step-id="kuccps">KUCCPS Choices</span>
+                            <span class="progress-step-label" data-step-id="hef">HEF Funding</span>
+                            <span class="progress-step-label" data-step-id="guarantors">Guarantors</span>
+                            <span class="progress-step-label" data-step-id="kra">KRA PIN</span>
+                            <span class="progress-step-label" data-step-id="documents">Documents</span>
+                            <span class="progress-step-label" data-step-id="review">Review</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="progress-fill"></div>
+                        </div>
+                    </div>
+
+                    <!-- STEP 1: Personal Information -->
+                    <div class="form-step" data-step-id="personal">
+                        <div
+                            style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.5rem;">
+                            <h3>Personal Information</h3>
+                            <button type="button" class="btn-change-service"
+                                style="background:none;border:none;color:var(--accent);text-decoration:underline;cursor:pointer;font-size:0.85rem;font-weight:600;">
+                                ← Change Service
+                            </button>
+                        </div>
+                        <p class="section-desc">Please provide your personal details as they appear on your National ID.
+                        </p>
 
                         <div class="form-group">
-                            <label for="fullname">Full Name</label>
+                            <label for="fullname">Full Name (as in ID) <span style="color:red">*</span></label>
                             <input type="text" id="fullname" name="fullname" placeholder="e.g. John Mwangi Njeru"
                                 required>
                             <p class="field-error">Please enter your full name.</p>
                         </div>
 
-                        <div class="form-group">
-                            <label for="phone">Phone Number</label>
-                            <input type="tel" id="phone" name="phone" placeholder="e.g. 0712345678" required>
-                            <p class="field-error">Please enter a valid phone number.</p>
+                        <div class="form-row" style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+                            <div class="form-group">
+                                <label for="id-number">National ID Number <span style="color:red">*</span></label>
+                                <input type="text" id="id-number" name="id_number" placeholder="e.g. 12345678" required>
+                                <p class="field-error">Please enter your ID number.</p>
+                            </div>
+                            <div class="form-group">
+                                <label for="dob">Date of Birth <span style="color:red">*</span></label>
+                                <input type="date" id="dob" name="dob" required>
+                                <p class="field-error">Please select your date of birth.</p>
+                            </div>
+                        </div>
+
+                        <div class="form-row" style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+                            <div class="form-group">
+                                <label for="gender">Gender <span style="color:red">*</span></label>
+                                <select id="gender" name="gender" required>
+                                    <option value="">— Select Gender —</option>
+                                    <option value="Male">Male</option>
+                                    <option value="Female">Female</option>
+                                </select>
+                                <p class="field-error">Please select your gender.</p>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Phone Number <span style="color:red">*</span></label>
+                                <input type="tel" id="phone" name="phone" placeholder="e.g. 0712345678" required>
+                                <p class="field-error">Please enter a valid phone number.</p>
+                            </div>
                         </div>
 
                         <div class="form-group">
-                            <label for="email">Email <span class="optional">(optional)</span></label>
+                            <label for="email">Email Address <span class="optional">(optional)</span></label>
                             <input type="email" id="email" name="email" placeholder="e.g. john@email.com">
                         </div>
 
                         <div class="form-group">
-                            <label for="id-number">ID Number</label>
-                            <input type="text" id="id-number" name="id_number" placeholder="e.g. 12345678" required>
-                            <p class="field-error">Please enter your ID number.</p>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="index-number">KCSE Index Number</label>
-                            <input type="text" id="index-number" name="index_number" placeholder="e.g. 12345678/2024"
-                                required>
-                            <p class="field-error">Please enter your KCSE index number.</p>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="county">County</label>
+                            <label for="county">County <span style="color:red">*</span></label>
                             <select id="county" name="county" required>
-                                <option value="">— Select your county —</option>
-                                <option>Baringo</option>
-                                <option>Bomet</option>
-                                <option>Bungoma</option>
-                                <option>Busia</option>
-                                <option>Elgeyo-Marakwet</option>
-                                <option>Embu</option>
-                                <option>Garissa</option>
-                                <option>Homa Bay</option>
-                                <option>Isiolo</option>
-                                <option>Kajiado</option>
-                                <option>Kakamega</option>
-                                <option>Kericho</option>
-                                <option>Kiambu</option>
-                                <option>Kilifi</option>
-                                <option>Kirinyaga</option>
-                                <option>Kisii</option>
-                                <option>Kisumu</option>
-                                <option>Kitui</option>
-                                <option>Kwale</option>
-                                <option>Laikipia</option>
-                                <option>Lamu</option>
-                                <option>Machakos</option>
-                                <option>Makueni</option>
-                                <option>Mandera</option>
-                                <option>Marsabit</option>
-                                <option>Meru</option>
-                                <option>Migori</option>
-                                <option>Mombasa</option>
-                                <option>Murang'a</option>
-                                <option>Nairobi</option>
-                                <option>Nakuru</option>
-                                <option>Nandi</option>
-                                <option>Narok</option>
-                                <option>Nyamira</option>
-                                <option>Nyandarua</option>
-                                <option>Nyeri</option>
-                                <option>Samburu</option>
-                                <option>Siaya</option>
-                                <option>Taita-Taveta</option>
-                                <option>Tana River</option>
-                                <option>Tharaka-Nithi</option>
-                                <option>Trans-Nzoia</option>
-                                <option>Turkana</option>
-                                <option>Uasin Gishu</option>
-                                <option>Vihiga</option>
-                                <option>Wajir</option>
-                                <option>West Pokot</option>
+                                <option value="">— Select County —</option>
+                                <option value="Baringo">Baringo</option>
+                                <option value="Bomet">Bomet</option>
+                                <option value="Bungoma">Bungoma</option>
+                                <option value="Busia">Busia</option>
+                                <option value="Elgeyo Marakwet">Elgeyo Marakwet</option>
+                                <option value="Embu">Embu</option>
+                                <option value="Garissa">Garissa</option>
+                                <option value="Homa Bay">Homa Bay</option>
+                                <option value="Isiolo">Isiolo</option>
+                                <option value="Kajiado">Kajiado</option>
+                                <option value="Kakamega">Kakamega</option>
+                                <option value="Kericho">Kericho</option>
+                                <option value="Kiambu">Kiambu</option>
+                                <option value="Kilifi">Kilifi</option>
+                                <option value="Kirinyaga">Kirinyaga</option>
+                                <option value="Kisii">Kisii</option>
+                                <option value="Kisumu">Kisumu</option>
+                                <option value="Kitui">Kitui</option>
+                                <option value="Kwale">Kwale</option>
+                                <option value="Laikipia">Laikipia</option>
+                                <option value="Lamu">Lamu</option>
+                                <option value="Machakos">Machakos</option>
+                                <option value="Makueni">Makueni</option>
+                                <option value="Mandera">Mandera</option>
+                                <option value="Marsabit">Marsabit</option>
+                                <option value="Meru">Meru</option>
+                                <option value="Migori">Migori</option>
+                                <option value="Murang'a">Murang'a</option>
+                                <option value="Nairobi">Nairobi</option>
+                                <option value="Nakuru">Nakuru</option>
+                                <option value="Nandi">Nandi</option>
+                                <option value="Narok">Narok</option>
+                                <option value="Nyamira">Nyamira</option>
+                                <option value="Nyandarua">Nyandarua</option>
+                                <option value="Nyeri">Nyeri</option>
+                                <option value="Samburu">Samburu</option>
+                                <option value="Siaya">Siaya</option>
+                                <option value="Taita Taveta">Taita Taveta</option>
+                                <option value="Tana River">Tana River</option>
+                                <option value="Tharaka Nithi">Tharaka Nithi</option>
+                                <option value="Trans Nzoia">Trans Nzoia</option>
+                                <option value="Turkana">Turkana</option>
+                                <option value="Uasin Gishu">Uasin Gishu</option>
+                                <option value="Vihiga">Vihiga</option>
+                                <option value="Wajir">Wajir</option>
+                                <option value="West Pokot">West Pokot</option>
                             </select>
                             <p class="field-error">Please select your county.</p>
                         </div>
 
-                        <div class="form-group">
-                            <label for="school-name">School Name</label>
-                            <input type="text" id="school-name" name="school_name"
-                                placeholder="e.g. Chuka Boys High School" required>
-                            <p class="field-error">Please enter your school name.</p>
-                        </div>
-
-                        <div class="form-buttons">
-                            <button type="button" class="btn btn-outline btn-prev">← Back</button>
-                            <button type="button" class="btn btn-primary btn-next">Next →</button>
-                        </div>
-                    </div>
-
-                    <!-- STEP 3: Service-Specific Details -->
-                    <div class="form-step" data-step="2">
-                        <h3>Service-Specific Details</h3>
-
-                        <!-- KUCCPS Fields -->
-                        <div id="kuccps-fields" style="display:none;">
-                            <h4 style="color:var(--accent);margin-bottom:1rem;font-size:1rem;">📚 KUCCPS Details</h4>
-
+                        <div class="form-row" style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
                             <div class="form-group">
-                                <label for="preferred-course">Preferred Course</label>
-                                <input type="text" id="preferred-course" name="preferred_course"
-                                    placeholder="e.g. Bachelor of Education">
-                            </div>
-
-                            <div class="form-group">
-                                <label for="preferred-institution">Preferred Institution</label>
-                                <input type="text" id="preferred-institution" name="preferred_institution"
-                                    placeholder="e.g. Chuka University">
-                            </div>
-
-                            <div class="form-group">
-                                <label for="cluster-grades">Cluster Subject Grades</label>
-                                <textarea id="cluster-grades" name="cluster_grades"
-                                    placeholder="e.g. Math: B+, English: B, Kiswahili: A-..."></textarea>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="revision-needed">Revision Needed?</label>
-                                <select id="revision-needed" name="revision_needed">
-                                    <option value="no">No</option>
-                                    <option value="yes">Yes</option>
+                                <label for="subcounty">Sub County <span style="color:red">*</span></label>
+                                <select id="subcounty" name="subcounty" required disabled>
+                                    <option value="">— Select County First —</option>
                                 </select>
+                                <p class="field-error">Please select your sub-county.</p>
+                            </div>
+                            <div class="form-group">
+                                <label for="ward">Ward <span class="optional">(optional)</span></label>
+                                <input type="text" id="ward" name="ward" placeholder="Enter your ward">
                             </div>
                         </div>
 
-                        <!-- HELB Fields -->
-                        <div id="helb-fields" style="display:none;">
-                            <h4 style="color:var(--accent);margin-bottom:1rem;font-size:1rem;"><i
-                                    class="fa-solid fa-credit-card"></i> HELB Details</h4>
-
+                        <div class="form-row" style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
                             <div class="form-group">
-                                <label for="bank-mpesa">Bank / M-Pesa Number</label>
-                                <input type="text" id="bank-mpesa" name="bank_mpesa" placeholder="e.g. 0712345678">
+                                <label for="postal-address">Postal Address <span
+                                        class="optional">(optional)</span></label>
+                                <input type="text" id="postal-address" name="postal_address"
+                                    placeholder="e.g. P.O Box 123">
                             </div>
-
                             <div class="form-group">
-                                <label for="guardian-name">Parent / Guardian Name</label>
-                                <input type="text" id="guardian-name" name="guardian_name"
-                                    placeholder="e.g. Mary Wanjiku">
-                            </div>
-
-                            <div class="form-group">
-                                <label for="guardian-phone">Parent / Guardian Phone</label>
-                                <input type="tel" id="guardian-phone" name="guardian_phone"
-                                    placeholder="e.g. 0722123456">
-                            </div>
-
-                            <div class="form-group">
-                                <label>Admission Letter (Upload)</label>
-                                <div class="upload-area">
-                                    <div class="upload-icon"><i class="fa-solid fa-paperclip"></i></div>
-                                    <div class="upload-text">Click or drag file here to upload</div>
-                                    <input type="file" name="admission_letter" accept=".pdf,.jpg,.jpeg,.png">
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <label>ID Copy (Upload)</label>
-                                <div class="upload-area">
-                                    <div class="upload-icon"><i class="fa-solid fa-paperclip"></i></div>
-                                    <div class="upload-text">Click or drag file here to upload</div>
-                                    <input type="file" name="helb_id_copy" accept=".pdf,.jpg,.jpeg,.png">
-                                </div>
+                                <label for="town">Town <span class="optional">(optional)</span></label>
+                                <input type="text" id="town" name="town" placeholder="e.g. Nairobi">
                             </div>
                         </div>
-
-                        <!-- KRA Fields -->
-                        <div id="kra-fields" style="display:none;">
-                            <h4 style="color:var(--accent);margin-bottom:1rem;font-size:1rem;"><i
-                                    class="fa-solid fa-file-lines"></i> KRA PIN Details</h4>
-
-                            <div class="form-group">
-                                <label>ID Copy (Upload)</label>
-                                <div class="upload-area">
-                                    <div class="upload-icon"><i class="fa-solid fa-paperclip"></i></div>
-                                    <div class="upload-text">Click or drag file here to upload</div>
-                                    <input type="file" name="kra_id_copy" accept=".pdf,.jpg,.jpeg,.png">
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="dob">Date of Birth</label>
-                                <input type="date" id="dob" name="date_of_birth">
-                            </div>
-                        </div>
-
-                        <!-- If no service selected yet -->
-                        <p id="no-service-msg" style="color:var(--text-secondary);text-align:center;display:none;">
-                            Please go back to Step 1 and select a service first.</p>
 
                         <div class="form-buttons">
-                            <button type="button" class="btn btn-outline btn-prev">← Back</button>
-                            <button type="button" class="btn btn-primary btn-next">Next →</button>
+                            <div></div>
+                            <button type="button" class="btn btn-primary btn-next">
+                                Next <i class="fa-solid fa-arrow-right"></i>
+                            </button>
                         </div>
                     </div>
 
-                    <!-- STEP 4: Consent & Submit -->
-                    <div class="form-step" data-step="3">
-                        <h3>Confirm &amp; Submit</h3>
-                        <p style="margin-bottom:1.5rem;">Please review your information above, then confirm below.</p>
+                    <!-- STEP: KUCCPS Choices -->
+                    <div class="form-step" data-step-id="kuccps">
+                        <h3>KUCCPS Application</h3>
+                        <p class="section-desc">Enter your academic details and course preferences. <em>If you don't
+                                know the course codes, you may leave them blank.</em></p>
+
+                        <div class="form-group">
+                            <label for="index-number">KCSE Index Number <span style="color:red">*</span></label>
+                            <input type="text" id="index-number" name="index_number" placeholder="e.g. 12345678001">
+                        </div>
+
+                        <div class="form-row" style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+                            <div class="form-group">
+                                <label for="kcse-year">KCSE Year <span style="color:red">*</span></label>
+                                <input type="number" id="kcse-year" name="kcse_year" placeholder="e.g. 2024" min="2000"
+                                    max="2030">
+                            </div>
+                            <div class="form-group">
+                                <label for="kcpe-index" class="tooltip-label">KCPE Index Number <span
+                                        class="optional">(optional)</span>
+                                    <i class="fa-solid fa-circle-question tooltip-icon"></i>
+                                </label>
+                                <div class="tooltip-text">This helps trace primary school records correctly.</div>
+                                <input type="text" id="kcpe-index" name="kcpe_index" placeholder="e.g. 12345678">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="school-name">Secondary School Name <span style="color:red">*</span></label>
+                            <input type="text" id="school-name" name="school_name"
+                                placeholder="e.g. Chuka Boys High School">
+                        </div>
+
+                        <div
+                            style="background:var(--light-bg);padding:1.25rem;border-radius:var(--radius-md);margin-bottom:1rem;border:1px solid var(--border-color);">
+                            <h4 style="margin-bottom:1rem;font-size:1rem;">Course Choices</h4>
+                            <div style="display:grid;grid-template-columns:2fr 1fr;gap:0.75rem;margin-bottom:0.75rem;">
+                                <div class="form-group" style="margin-bottom:0;"><label>Institution 1 <span
+                                            style="color:red">*</span></label><input type="text" name="kuccps_inst1">
+                                </div>
+                                <div class="form-group" style="margin-bottom:0;"><label>Course Code 1</label><input
+                                        type="text" name="kuccps_code1"></div>
+                            </div>
+                            <div style="display:grid;grid-template-columns:2fr 1fr;gap:0.75rem;margin-bottom:0.75rem;">
+                                <div class="form-group" style="margin-bottom:0;"><label>Institution 2 <span
+                                            style="color:red">*</span></label><input type="text" name="kuccps_inst2">
+                                </div>
+                                <div class="form-group" style="margin-bottom:0;"><label>Course Code 2</label><input
+                                        type="text" name="kuccps_code2"></div>
+                            </div>
+                            <div style="display:grid;grid-template-columns:2fr 1fr;gap:0.75rem;margin-bottom:0.75rem;">
+                                <div class="form-group" style="margin-bottom:0;"><label>Institution 3 <span
+                                            class="optional">(opt)</span></label><input type="text" name="kuccps_inst3">
+                                </div>
+                                <div class="form-group" style="margin-bottom:0;"><label>Course Code 3</label><input
+                                        type="text" name="kuccps_code3"></div>
+                            </div>
+                            <div style="display:grid;grid-template-columns:2fr 1fr;gap:0.75rem;">
+                                <div class="form-group" style="margin-bottom:0;"><label>Institution 4 <span
+                                            class="optional">(opt)</span></label><input type="text" name="kuccps_inst4">
+                                </div>
+                                <div class="form-group" style="margin-bottom:0;"><label>Course Code 4</label><input
+                                        type="text" name="kuccps_code4"></div>
+                            </div>
+                        </div>
+
+                        <div class="form-buttons">
+                            <button type="button" class="btn btn-outline btn-prev">← Back</button>
+                            <button type="button" class="btn btn-primary btn-next">Next <i
+                                    class="fa-solid fa-arrow-right"></i></button>
+                        </div>
+                    </div>
+
+                    <!-- STEP: HEF Funding -->
+                    <div class="form-step" data-step-id="hef">
+                        <h3>HEF / HELB Funding Details</h3>
+                        <p class="section-desc">Provide your institution and guardian details for HELB/HEF funding
+                            application.</p>
+
+                        <div class="form-row" style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+                            <div class="form-group">
+                                <label>Institution Name <span style="color:red">*</span></label>
+                                <input type="text" name="hef_inst_name" placeholder="e.g. Chuka University">
+                            </div>
+                            <div class="form-group">
+                                <label>Course Name <span style="color:red">*</span></label>
+                                <input type="text" name="hef_course_name" placeholder="e.g. Bachelor of Education">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Parent / Guardian Marital Status <span style="color:red">*</span></label>
+                            <select name="parent_marital_status" onchange="toggleParentFields(this.value)">
+                                <option value="Both Alive">Married / Both Parents Alive</option>
+                                <option value="Single Parent">Single Parent</option>
+                                <option value="Orphaned - Both">Orphaned (Both Parents Deceased)</option>
+                                <option value="Orphaned - One">Orphaned (One Parent Deceased)</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Parent / Guardian Details</label>
+                            <div class="guarantor-box">
+                                <div id="parent-details">
+                                    <div
+                                        style="display:grid;grid-template-columns:1fr 1fr;gap:0.75rem;margin-bottom:0.75rem;">
+                                        <div class="form-group" style="margin-bottom:0;"><label>Parent/Guardian
+                                                Name</label><input type="text" name="parent_name"></div>
+                                        <div class="form-group" style="margin-bottom:0;"><label>Parent/Guardian ID
+                                                No</label><input type="text" name="parent_id"></div>
+                                    </div>
+                                    <div
+                                        style="display:grid;grid-template-columns:1fr 1fr;gap:0.75rem;margin-bottom:0.75rem;">
+                                        <div class="form-group" style="margin-bottom:0;"><label>Parent Phone
+                                                Number</label><input type="tel" name="parent_phone"></div>
+                                        <div class="form-group" style="margin-bottom:0;"><label>Parent
+                                                Occupation</label><input type="text" name="parent_occupation"></div>
+                                    </div>
+                                    <div class="form-group" style="margin-bottom:0;">
+                                        <label>Parent Income Range</label>
+                                        <select name="parent_income">
+                                            <option value="">— Select Range —</option>
+                                            <option>Below 10,000</option>
+                                            <option>10,000 - 50,000</option>
+                                            <option>50,001 - 100,000</option>
+                                            <option>Above 100,000</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-buttons">
+                            <button type="button" class="btn btn-outline btn-prev">← Back</button>
+                            <button type="button" class="btn btn-primary btn-next">Next <i
+                                    class="fa-solid fa-arrow-right"></i></button>
+                        </div>
+                    </div>
+
+                    <!-- STEP: Guarantors -->
+                    <div class="form-step" data-step-id="guarantors">
+                        <h3>HELB Guarantors</h3>
+                        <p class="section-desc">Guarantors are required for HELB loans. Make sure they are employed or
+                            have a steady income.</p>
+
+                        <div class="guarantor-box">
+                            <h4>Guarantor 1 <span class="optional">(optional, but recommended)</span></h4>
+                            <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:0.75rem;">
+                                <div class="form-group" style="margin-bottom:0;"><label>Full Name</label><input
+                                        type="text" name="guarantor1_name"></div>
+                                <div class="form-group" style="margin-bottom:0;"><label>ID Number</label><input
+                                        type="text" name="guarantor1_id"></div>
+                                <div class="form-group" style="margin-bottom:0;"><label>Phone Number</label><input
+                                        type="tel" name="guarantor1_phone"></div>
+                            </div>
+                        </div>
+
+                        <div class="guarantor-box">
+                            <h4>Guarantor 2 <span class="optional">(optional, but recommended)</span></h4>
+                            <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:0.75rem;">
+                                <div class="form-group" style="margin-bottom:0;"><label>Full Name</label><input
+                                        type="text" name="guarantor2_name"></div>
+                                <div class="form-group" style="margin-bottom:0;"><label>ID Number</label><input
+                                        type="text" name="guarantor2_id"></div>
+                                <div class="form-group" style="margin-bottom:0;"><label>Phone Number</label><input
+                                        type="tel" name="guarantor2_phone"></div>
+                            </div>
+                        </div>
+
+                        <div class="form-buttons">
+                            <button type="button" class="btn btn-outline btn-prev">← Back</button>
+                            <button type="button" class="btn btn-primary btn-next">Next <i
+                                    class="fa-solid fa-arrow-right"></i></button>
+                        </div>
+                    </div>
+
+                    <!-- STEP: KRA PIN -->
+                    <div class="form-step" data-step-id="kra">
+                        <h3>KRA PIN Registration</h3>
+                        <p class="section-desc">Provide details for your KRA PIN registration.</p>
+
+                        <div class="form-group">
+                            <label for="kra-occupation">Occupation <span style="color:red">*</span></label>
+                            <input type="text" id="kra-occupation" name="kra_occupation"
+                                placeholder="e.g. Student, Unemployed">
+                        </div>
+                        <div class="form-group">
+                            <label for="tax-obligation">Tax Obligation Type <span style="color:red">*</span></label>
+                            <select id="tax-obligation" name="tax_obligation">
+                                <option value="Student">PIN Without Obligation (Student)</option>
+                                <option value="Resident">Income Tax Resident Individual</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="employer-pin" class="tooltip-label">Employer PIN <span
+                                    class="optional">(optional)</span>
+                                <i class="fa-solid fa-circle-question tooltip-icon"></i>
+                            </label>
+                            <div class="tooltip-text">Only for employed individuals registering a PIN.</div>
+                            <input type="text" id="employer-pin" name="employer_pin" placeholder="If applicable">
+                        </div>
+
+                        <div class="form-buttons">
+                            <button type="button" class="btn btn-outline btn-prev">← Back</button>
+                            <button type="button" class="btn btn-primary btn-next">Next <i
+                                    class="fa-solid fa-arrow-right"></i></button>
+                        </div>
+                    </div>
+
+                    <!-- STEP: Documents -->
+                    <div class="form-step" data-step-id="documents">
+                        <h3>Document Uploads</h3>
+                        <p class="section-desc">Upload the required documents based on your selected service. Accepted:
+                            PDF, JPG, PNG.</p>
+
+                        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1rem;">
+                            <div class="form-group" data-doc-req="kuccps,helb,full" data-required="true">
+                                <label>KCSE Result Slip <span style="color:red">*</span></label>
+                                <input type="file" name="doc_result_slip" accept=".pdf,.jpg,.jpeg,.png">
+                            </div>
+
+                            <div class="form-group" data-doc-req="kra,helb,full" data-required="true">
+                                <label>National ID (Front) <span style="color:red">*</span></label>
+                                <input type="file" name="doc_id_front" accept=".pdf,.jpg,.jpeg,.png">
+                            </div>
+
+                            <div class="form-group" data-doc-req="kra,helb,full" data-required="true">
+                                <label>National ID (Back) <span style="color:red">*</span></label>
+                                <input type="file" name="doc_id_back" accept=".pdf,.jpg,.jpeg,.png">
+                            </div>
+
+                            <div class="form-group" data-doc-req="helb,full" data-required="true">
+                                <label>Passport Photo <span style="color:red">*</span></label>
+                                <input type="file" name="doc_passport" accept=".jpg,.jpeg,.png">
+                                <small style="display:block;margin-top:2px;color:var(--text-muted);">Clear, balanced
+                                    lighting</small>
+                            </div>
+
+                            <div class="form-group" data-doc-req="helb,full" data-required="true">
+                                <label>Admission Letter <span style="color:red">*</span></label>
+                                <input type="file" name="doc_admission" accept=".pdf,.jpg,.jpeg,.png">
+                                <small style="display:block;margin-top:2px;color:var(--text-muted);">From KUCCPS or
+                                    Institution</small>
+                            </div>
+
+                            <div class="form-group" data-doc-req="helb,full" data-required="false">
+                                <label>Gaurantor 1 ID <span style="color:red">*</span></label>
+                                <input type="file" name="doc_guarantor1_id" accept=".pdf,.jpg,.jpeg,.png">
+                            </div>
+
+                            <div class="form-group" data-doc-req="helb,full" data-required="false">
+                                <label>Gaurantor 2 ID <span style="color:red">*</span></label>
+                                <input type="file" name="doc_guarantor2_id" accept=".pdf,.jpg,.jpeg,.png">
+                            </div>
+
+                            <div class="form-group doc_death_cert_group" style="display:none;" data-doc-req="helb,full"
+                                data-required="false">
+                                <label>Death Certificate <span style="color:red">*</span></label>
+                                <input type="file" name="doc_death_cert" accept=".pdf,.jpg,.jpeg,.png">
+                            </div>
+                        </div>
+
+                        <div class="form-buttons">
+                            <button type="button" class="btn btn-outline btn-prev">← Back</button>
+                            <button type="button" class="btn btn-primary btn-next" onclick="generateSummary()">
+                                Next: Review <i class="fa-solid fa-arrow-right"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- STEP: Review -->
+                    <div class="form-step" data-step-id="review">
+                        <h3>Review &amp; Submit</h3>
+                        <div id="review-summary"
+                            style="background:var(--light-bg);color:var(--text-primary);padding:1.5rem;border:1px solid var(--border-color);border-radius:var(--radius-md);margin-bottom:2rem;max-height:400px;overflow-y:auto;">
+                            <!-- Generated by JS -->
+                        </div>
 
                         <div class="checkbox-group">
                             <input type="checkbox" id="consent" name="consent" required>
-                            <label for="consent">I authorize the processing of my application through official
-                                government portals. I confirm that the information I've provided is accurate.</label>
+                            <label for="consent">I confirm that all information provided is accurate and I agree to the
+                                terms of service.</label>
                         </div>
-                        <p class="field-error" id="consent-error">You must agree to continue.</p>
+                        <p class="field-error" id="consent-error">You must confirm to continue.</p>
 
                         <div class="form-buttons" style="margin-top:1.5rem;">
-                            <button type="button" class="btn btn-outline btn-prev">← Back</button>
-                            <button type="submit" class="btn btn-primary btn-submit" id="submit-btn"><i
-                                    class="fa-solid fa-lock"></i> Submit
-                                Securely</button>
+                            <button type="button" class="btn btn-outline btn-prev">← Edit Information</button>
+                            <button type="submit" class="btn btn-primary btn-submit" id="submit-btn">
+                                <i class="fa-solid fa-paper-plane"></i> Submit Application
+                            </button>
                         </div>
                     </div>
                 </form>
@@ -650,16 +912,18 @@
             <!-- Success Screen -->
             <div class="form-container" id="success-screen" style="display:none;">
                 <div class="success-screen">
-                    <div class="success-icon"><i class="fa-solid fa-circle-check"></i></div>
+                    <i class="fa-solid fa-circle-check success-icon"></i>
                     <h3>Application Submitted Successfully!</h3>
-                    <p>Thank you for choosing CAINT Student Service. You will receive a response within <strong>30
-                            minutes</strong>.</p>
+                    <p>Thank you for choosing CAINT Student Service. You will receive a response within
+                        <strong>30 minutes</strong>.
+                    </p>
                     <p style="font-size:0.9rem;">We'll contact you via WhatsApp or phone. Keep your phone accessible.
                     </p>
-                    <div style="margin-top:1.5rem;">
+                    <div style="margin-top:1.75rem;">
                         <a href="https://wa.me/254756963430?text=Hi%2C%20I%20just%20submitted%20my%20application%20and%20would%20like%20to%20follow%20up."
-                            class="btn btn-whatsapp" target="_blank" rel="noopener"><i
-                                class="fa-brands fa-whatsapp"></i> Follow Up on WhatsApp</a>
+                            class="btn btn-whatsapp" target="_blank" rel="noopener">
+                            <i class="fa-brands fa-whatsapp"></i> Follow Up on WhatsApp
+                        </a>
                     </div>
                 </div>
             </div>
@@ -669,6 +933,8 @@
     <!-- ========== 6. PRIVACY & TRUST ========== -->
     <section class="privacy-section alt-bg" id="privacy">
         <div class="container">
+            <div class="section-tag reveal" style="margin:0 auto 1rem;display:table;"><i
+                    class="fa-solid fa-shield-halved"></i> Data Protection</div>
             <h2 class="reveal">Your Privacy &amp; Security</h2>
             <p class="section-subtitle reveal">We take your data protection seriously.</p>
 
@@ -691,27 +957,27 @@
                 <div class="trust-card-item reveal">
                     <div class="tc-icon"><i class="fa-solid fa-rotate-left"></i></div>
                     <h4>Refund Policy</h4>
-                    <p><strong>Full refund</strong> if we fail to submit your application due to our error. <strong>50%
-                            refund</strong> if the portal is permanently closed before we can process your request. No
-                        refund once a successful submission is made and proof is delivered. Refunds are processed within
-                        48 hours via M-Pesa.</p>
+                    <p><strong>Full refund</strong> if we fail due to our error. <strong>50% refund</strong> if portal
+                        closes before processing. No refund once successful submission proof is delivered. Processed
+                        within 48 hours via M-Pesa.</p>
                 </div>
             </div>
 
             <h3 class="reveal" style="text-align:center;margin-top:3rem;">Official Government Portals</h3>
             <p class="section-subtitle reveal">We only use these verified portals:</p>
             <div class="official-links reveal">
-                <a href="https://students.kuccps.net" class="official-link" target="_blank" rel="noopener"><i
-                        class="fa-solid fa-link"></i>
-                    students.kuccps.net</a>
-                <a href="https://www.helb.co.ke" class="official-link" target="_blank" rel="noopener"><i
-                        class="fa-solid fa-link"></i> helb.co.ke</a>
-                <a href="https://itax.kra.go.ke" class="official-link" target="_blank" rel="noopener"><i
-                        class="fa-solid fa-link"></i>
-                    itax.kra.go.ke</a>
-                <a href="https://www.tveta.go.ke" class="official-link" target="_blank" rel="noopener"><i
-                        class="fa-solid fa-link"></i>
-                    tveta.go.ke</a>
+                <a href="https://students.kuccps.net" class="official-link" target="_blank" rel="noopener">
+                    <i class="fa-solid fa-link"></i> students.kuccps.net
+                </a>
+                <a href="https://www.helb.co.ke" class="official-link" target="_blank" rel="noopener">
+                    <i class="fa-solid fa-link"></i> helb.co.ke
+                </a>
+                <a href="https://itax.kra.go.ke" class="official-link" target="_blank" rel="noopener">
+                    <i class="fa-solid fa-link"></i> itax.kra.go.ke
+                </a>
+                <a href="https://www.tveta.go.ke" class="official-link" target="_blank" rel="noopener">
+                    <i class="fa-solid fa-link"></i> tveta.go.ke
+                </a>
             </div>
         </div>
     </section>
@@ -722,28 +988,32 @@
             <div class="footer-content">
                 <!-- About -->
                 <div class="footer-section">
-                    <h4><i class="fa-solid fa-building-columns"></i> CAINT Student Service</h4>
+                    <h4><i class="fa-solid fa-building-columns" style="color:#60a5fa;"></i> CAINT Student Service</h4>
                     <p>Trusted digital assistance for Form 4 leavers applying for KUCCPS, HELB, KRA PIN, and TVET
                         placements in Kenya.</p>
                     <div class="social-links">
                         <a href="https://chat.whatsapp.com/CdO9bFlm5in5UT7GAlyNbq" target="_blank" rel="noopener"
-                            aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+                            aria-label="WhatsApp Group"><i class="fa-brands fa-whatsapp"></i></a>
                         <a href="https://www.tiktok.com/@caintcraetion" target="_blank" rel="noopener"
                             aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
-                        <a href="https://wa.me/254756963430" target="_blank" rel="noopener" aria-label="Chat"><i
-                                class="fa-solid fa-mobile-screen"></i></a>
+                        <a href="https://wa.me/254756963430" target="_blank" rel="noopener" aria-label="Direct Chat">
+                            <i class="fa-solid fa-mobile-screen"></i></a>
                     </div>
                 </div>
 
                 <!-- Quick Links -->
                 <div class="footer-section">
                     <h4>Quick Links</h4>
-                    <a href="#home">Home</a>
-                    <a href="#how-it-works">How It Works</a>
-                    <a href="#services">Services &amp; Pricing</a>
-                    <a href="#trust">Trust &amp; FAQ</a>
-                    <a href="#apply">Apply Now</a>
-                    <a href="#privacy">Privacy &amp; Security</a>
+                    <a href="#home"><i class="fa-solid fa-chevron-right" style="font-size:0.7rem;"></i> Home</a>
+                    <a href="#how-it-works"><i class="fa-solid fa-chevron-right" style="font-size:0.7rem;"></i> How It
+                        Works</a>
+                    <a href="#services"><i class="fa-solid fa-chevron-right" style="font-size:0.7rem;"></i> Services
+                        &amp; Pricing</a>
+                    <a href="#trust"><i class="fa-solid fa-chevron-right" style="font-size:0.7rem;"></i> Trust &amp;
+                        FAQ</a>
+                    <a href="#apply"><i class="fa-solid fa-chevron-right" style="font-size:0.7rem;"></i> Apply Now</a>
+                    <a href="#privacy"><i class="fa-solid fa-chevron-right" style="font-size:0.7rem;"></i> Privacy &amp;
+                        Security</a>
                 </div>
 
                 <!-- Contact -->
@@ -751,7 +1021,7 @@
                     <h4>Contact Us</h4>
                     <div class="footer-contact">
                         <div class="footer-contact-item">
-                            <span class="contact-icon">📞</span>
+                            <span class="contact-icon"><i class="fa-solid fa-phone"></i></span>
                             <span>+254 714 772 901 / +254 756 963 430</span>
                         </div>
                         <div class="footer-contact-item">
@@ -761,7 +1031,7 @@
                                 WhatsApp</a>
                         </div>
                         <div class="footer-contact-item">
-                            <span class="contact-icon">✉️</span>
+                            <span class="contact-icon"><i class="fa-solid fa-envelope"></i></span>
                             <span>maduvwe88@gmail.com</span>
                         </div>
                         <div class="footer-contact-item">
@@ -773,9 +1043,8 @@
             </div>
 
             <div class="footer-bottom">
-                &copy; <span id="current-year"></span> CAINT Student Service. All rights reserved. | Built with <i
-                    class="fa-solid fa-heart" style="color:red;"></i> in
-                Chuka, Kenya
+                &copy; <span id="current-year"></span> CAINT Student Service. All rights reserved. |
+                Built with <i class="fa-solid fa-heart" style="color:#f87171;"></i> in Chuka, Kenya
             </div>
         </div>
     </footer>
