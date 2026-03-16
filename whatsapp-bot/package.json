@@ -4,7 +4,7 @@
   "description": "CAINT Student Service – WhatsApp notification bot",
   "main": "bot_full.js",
   "scripts": {
-    "start": "node bot_full.js",
+    "start": "npx puppeteer browsers install chrome && node bot_full.js",
     "dev": "node bot_full.js"
   },
   "keywords": [],
