@@ -14,8 +14,10 @@ const qrcode = require('qrcode-terminal');
 const axios = require('axios');
 const fs = require('fs');
 const http = require('http');
+const packageInfo = require('./package.json');
 
 const botStatus = {
+    version: packageInfo.version,
     phase: 'starting',
     authenticated: false,
     ready: false,
@@ -23,7 +25,8 @@ const botStatus = {
     state: 'initialising',
     lastError: '',
     lastSheetCheck: '',
-    lastSheetResult: 'Not checked yet'
+    lastSheetResult: 'Not checked yet',
+    browserPreflight: 'Not started'
 };
 
 // ─── Configuration ────────────────────────────────────────────────
@@ -134,6 +137,40 @@ const authStrategy = isRender
     : new LocalAuth({ dataPath: '.wwebjs_auth' });
 
 console.log(`[${ts()}] Using auth strategy: ${isRender ? 'NoAuth (Render)' : 'LocalAuth (local)'} `);
+
+async function runBrowserPreflight() {
+    let browser;
+    try {
+        botStatus.browserPreflight = 'Launching browser';
+        browser = await puppeteer.launch({
+            headless: true,
+            executablePath: chromeExecutablePath,
+            timeout: 120000,
+            args: [
+                '--no-sandbox',
+                '--disable-setuid-sandbox',
+                '--disable-dev-shm-usage',
+                '--disable-gpu',
+                '--disable-extensions',
+                '--disable-background-networking',
+                '--window-size=1366,768'
+            ]
+        });
+
+        const page = await browser.newPage();
+        await page.goto('https://example.com', { waitUntil: 'domcontentloaded', timeout: 60000 });
+        botStatus.browserPreflight = 'Passed';
+        console.log(`[${ts()}] Browser preflight passed.`);
+    } catch (err) {
+        botStatus.browserPreflight = `Failed: ${err.message}`;
+        botStatus.lastError = err.message;
+        console.error(`[${ts()}] ❌ Browser preflight failed: ${err.message}`);
+    } finally {
+        if (browser) {
+            await browser.close().catch(() => {});
+        }
+    }
+}
 
 const client = new Client({
     authStrategy,
@@ -346,8 +383,12 @@ function sleep(ms) {
 
 // ─── Start ────────────────────────────────────────────────────────
 console.log(`[${ts()}] 🚀 Starting CAINT WhatsApp Bot…`);
-client.initialize().catch((err) => {
-    botStatus.phase = 'init-failed';
-    botStatus.lastError = err.message;
-    console.error(`[${ts()}] ❌ Client initialization failed: ${err.message}`);
-});
+(async () => {
+    await runBrowserPreflight();
+
+    client.initialize().catch((err) => {
+        botStatus.phase = 'init-failed';
+        botStatus.lastError = err.message;
+        console.error(`[${ts()}] ❌ Client initialization failed: ${err.message}`);
+    });
+})();
