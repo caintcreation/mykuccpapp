@@ -9,6 +9,7 @@
 
 'use strict';
 const { Client, LocalAuth } = require('whatsapp-web.js');
+const puppeteer = require('puppeteer');
 const qrcode = require('qrcode-terminal');
 const axios = require('axios');
 const fs = require('fs');
@@ -58,10 +59,14 @@ function ts() {
 // ─── WhatsApp Client ──────────────────────────────────────────────
 // LocalAuth saves your QR session to disk – you only scan once.
 // puppeteer args are REQUIRED for any Linux/cloud environment.
+const chromeExecutablePath = puppeteer.executablePath();
+console.log(`[${ts()}] Using Chrome executable: ${chromeExecutablePath}`);
+
 const client = new Client({
     authStrategy: new LocalAuth(),
     puppeteer: {
         headless: true,
+        executablePath: chromeExecutablePath,
         args: [
             '--no-sandbox',
             '--disable-setuid-sandbox',
