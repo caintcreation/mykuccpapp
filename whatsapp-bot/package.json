@@ -5,7 +5,8 @@
   "main": "bot_full.js",
   "scripts": {
     "start": "node bot_full.js",
-    "dev": "node bot_full.js"
+    "dev": "node bot_full.js",
+    "postinstall": "npx puppeteer browsers install chrome"
   },
   "keywords": [],
   "author": "",
