@@ -129,19 +129,21 @@ console.log(`[${ts()}] Using Chrome executable: ${chromeExecutablePath}`);
 botStatus.phase = 'launching-browser';
 
 const client = new Client({
-    authStrategy: new LocalAuth(),
+    authStrategy: new LocalAuth({ dataPath: '.wwebjs_auth' }),
     puppeteer: {
         headless: true,
         executablePath: chromeExecutablePath,
+        timeout: 120000,
         args: [
             '--no-sandbox',
             '--disable-setuid-sandbox',
             '--disable-dev-shm-usage',
-            '--disable-accelerated-2d-canvas',
             '--no-first-run',
             '--no-zygote',
-            '--single-process',
-            '--disable-gpu'
+            '--disable-gpu',
+            '--disable-extensions',
+            '--disable-background-networking',
+            '--window-size=1366,768'
         ]
     }
 });
@@ -337,4 +339,8 @@ function sleep(ms) {
 
 // ─── Start ────────────────────────────────────────────────────────
 console.log(`[${ts()}] 🚀 Starting CAINT WhatsApp Bot…`);
-client.initialize();
+client.initialize().catch((err) => {
+    botStatus.phase = 'init-failed';
+    botStatus.lastError = err.message;
+    console.error(`[${ts()}] ❌ Client initialization failed: ${err.message}`);
+});
