@@ -145,7 +145,7 @@ async function runBrowserPreflight() {
         browser = await puppeteer.launch({
             headless: true,
             executablePath: chromeExecutablePath,
-            timeout: 120000,
+            timeout: 300000,
             args: [
                 '--no-sandbox',
                 '--disable-setuid-sandbox',
@@ -177,7 +177,8 @@ const client = new Client({
     puppeteer: {
         headless: true,
         executablePath: chromeExecutablePath,
-        timeout: 120000,
+        timeout: 300000,
+        protocolTimeout: 300000,
         args: [
             '--no-sandbox',
             '--disable-setuid-sandbox',
