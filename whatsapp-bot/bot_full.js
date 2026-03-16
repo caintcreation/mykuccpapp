@@ -15,6 +15,17 @@ const axios = require('axios');
 const fs = require('fs');
 const http = require('http');
 
+const botStatus = {
+    phase: 'starting',
+    authenticated: false,
+    ready: false,
+    qr: '',
+    state: 'initialising',
+    lastError: '',
+    lastSheetCheck: '',
+    lastSheetResult: 'Not checked yet'
+};
+
 // ─── Configuration ────────────────────────────────────────────────
 // PASTE YOUR GOOGLE SHEET CSV LINK HERE (File → Share → Publish to web → CSV)
 const SHEET_CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vSCbu74oY95FGtSqSsERB8xfRDShE6zJ1nIEKu3fqXjTPwYt70rayH2_0OyM8-dI6F9Xn-CCxk4C7rX/pub?output=csv";
@@ -46,8 +57,62 @@ function saveProcessed() {
 // Render.com free tier requires an open port. UptimeRobot pings this
 // URL every 5 minutes to prevent the service from sleeping.
 http.createServer((req, res) => {
+    if (req.url === '/status') {
+        res.writeHead(200, { 'Content-Type': 'application/json' });
+        res.end(JSON.stringify({
+            ...botStatus,
+            processedCount: processedNumbers.length
+        }, null, 2));
+        return;
+    }
+
+    if (req.url === '/qr') {
+        res.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8' });
+
+        if (!botStatus.qr) {
+            res.end(`<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>CAINT Bot QR</title></head>
+<body style="font-family: Arial, sans-serif; padding: 24px;">
+  <h1>CAINT Bot QR</h1>
+  <p>No QR is waiting right now.</p>
+  <p>Current phase: <strong>${botStatus.phase}</strong></p>
+  <p>Current state: <strong>${botStatus.state}</strong></p>
+  <p>Ready: <strong>${botStatus.ready}</strong></p>
+  <p>Authenticated: <strong>${botStatus.authenticated}</strong></p>
+  <p>Last error: <strong>${botStatus.lastError || 'None'}</strong></p>
+</body>
+</html>`);
+            return;
+        }
+
+        const qrImageUrl = `https://api.qrserver.com/v1/create-qr-code/?size=320x320&data=${encodeURIComponent(botStatus.qr)}`;
+        res.end(`<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>CAINT Bot QR</title></head>
+<body style="font-family: Arial, sans-serif; padding: 24px; text-align: center;">
+  <h1>Scan This WhatsApp QR</h1>
+  <p>Open WhatsApp -> Linked Devices -> Link a Device</p>
+  <img src="${qrImageUrl}" alt="WhatsApp QR code" style="max-width: 320px; width: 100%; height: auto; border: 1px solid #ddd;" />
+  <p style="margin-top: 16px; color: #666;">Refresh this page if the QR expires.</p>
+</body>
+</html>`);
+        return;
+    }
+
     res.writeHead(200, { 'Content-Type': 'text/plain' });
-    res.end(`CAINT Bot is running. Processed: ${processedNumbers.length} numbers.`);
+    res.end(
+        `CAINT Bot is running\n` +
+        `Phase: ${botStatus.phase}\n` +
+        `State: ${botStatus.state}\n` +
+        `Authenticated: ${botStatus.authenticated}\n` +
+        `Ready: ${botStatus.ready}\n` +
+        `Processed: ${processedNumbers.length}\n` +
+        `Last sheet check: ${botStatus.lastSheetCheck || 'Never'}\n` +
+        `Last sheet result: ${botStatus.lastSheetResult}\n` +
+        `QR page: /qr\n` +
+        `Status JSON: /status\n`
+    );
 }).listen(PORT, () => {
     console.log(`[${ts()}] Keep-alive server listening on port ${PORT}`);
 });
@@ -61,6 +126,7 @@ function ts() {
 // puppeteer args are REQUIRED for any Linux/cloud environment.
 const chromeExecutablePath = puppeteer.executablePath();
 console.log(`[${ts()}] Using Chrome executable: ${chromeExecutablePath}`);
+botStatus.phase = 'launching-browser';
 
 const client = new Client({
     authStrategy: new LocalAuth(),
@@ -81,11 +147,19 @@ const client = new Client({
 });
 
 client.on('qr', (qr) => {
+    botStatus.phase = 'waiting-for-qr-scan';
+    botStatus.qr = qr;
+    botStatus.ready = false;
     qrcode.generate(qr, { small: true });
     console.log(`[${ts()}] 📱 Scan the QR code above with your WhatsApp (Linked Devices → Link a Device)`);
+    console.log(`[${ts()}] Open /qr on your Render app to scan if the terminal QR is not visible.`);
 });
 
 client.on('ready', async () => {
+    botStatus.phase = 'ready';
+    botStatus.ready = true;
+    botStatus.authenticated = true;
+    botStatus.qr = '';
     console.log(`[${ts()}] ✅ WhatsApp connected and ready!`);
     // Check sheet immediately for any uncontacted submissions, then poll
     await checkSheet();
@@ -94,23 +168,49 @@ client.on('ready', async () => {
 });
 
 client.on('authenticated', () => {
+    botStatus.phase = 'authenticated';
+    botStatus.authenticated = true;
+    botStatus.lastError = '';
     console.log(`[${ts()}] 🔐 Session authenticated.`);
 });
 
 client.on('auth_failure', (msg) => {
+    botStatus.phase = 'auth-failure';
+    botStatus.authenticated = false;
+    botStatus.ready = false;
+    botStatus.lastError = msg;
     console.error(`[${ts()}] ❌ Authentication failed: ${msg}`);
 });
 
 client.on('disconnected', (reason) => {
+    botStatus.phase = 'disconnected';
+    botStatus.ready = false;
+    botStatus.authenticated = false;
+    botStatus.lastError = reason;
     console.warn(`[${ts()}] ⚠️  Disconnected (${reason}). Reinitialising in 10 seconds…`);
     setTimeout(() => {
+        botStatus.phase = 'reinitialising';
         client.initialize();
     }, 10000);
 });
 
+client.on('loading_screen', (percent, message) => {
+    botStatus.phase = 'loading';
+    botStatus.state = `${percent}% ${message}`;
+    console.log(`[${ts()}] Loading WhatsApp: ${percent}% - ${message}`);
+});
+
+client.on('change_state', (state) => {
+    botStatus.state = state;
+    console.log(`[${ts()}] WhatsApp state: ${state}`);
+});
+
 // ─── Sheet checker ────────────────────────────────────────────────
 async function checkSheet() {
+    botStatus.lastSheetCheck = ts();
+
     if (!SHEET_CSV_URL || SHEET_CSV_URL === 'YOUR_CSV_LINK_HERE') {
+        botStatus.lastSheetResult = 'Missing sheet URL';
         console.warn(`[${ts()}] ⚠️  Set SHEET_CSV_URL at the top of bot_full.js`);
         return;
     }
@@ -118,7 +218,10 @@ async function checkSheet() {
     try {
         const response = await axios.get(SHEET_CSV_URL, { timeout: 15000 });
         const lines = response.data.trim().split(/\r?\n/);
-        if (lines.length < 2) return; // empty or header only
+        if (lines.length < 2) {
+            botStatus.lastSheetResult = 'Sheet empty or header only';
+            return;
+        }
 
         const headers = lines[0].split(',').map(h => h.replace(/"/g, '').trim().toLowerCase());
 
@@ -131,9 +234,12 @@ async function checkSheet() {
         const serviceIdx = headers.findIndex(h => h === 'service');
 
         if (phoneIndices.length === 0) {
+            botStatus.lastSheetResult = 'No phone column found';
             console.warn(`[${ts()}] ⚠️  No phone column found in Sheet.`);
             return;
         }
+
+        let foundNewNumber = false;
 
         for (let i = 1; i < lines.length; i++) {
             const cols = parseCSVLine(lines[i]);
@@ -149,6 +255,8 @@ async function checkSheet() {
 
             phone = normalisePhone(phone);
             if (!phone || processedNumbers.includes(phone)) continue;
+
+            foundNewNumber = true;
 
             const name = nameIdx !== -1 ? (cols[nameIdx] || 'Student').trim() : 'Student';
             const service = serviceIdx !== -1 ? (cols[serviceIdx] || '').trim() : '';
@@ -177,7 +285,15 @@ async function checkSheet() {
             // Polite delay (5-10 s) to avoid WhatsApp rate-limiting
             await sleep(Math.floor(Math.random() * 5000) + 5000);
         }
+
+        if (!foundNewNumber) {
+            botStatus.lastSheetResult = `No new numbers. Total rows: ${lines.length - 1}`;
+        } else {
+            botStatus.lastSheetResult = 'Processed one or more new numbers';
+        }
     } catch (err) {
+        botStatus.lastSheetResult = 'Sheet fetch error';
+        botStatus.lastError = err.message;
         console.error(`[${ts()}] ❌ Sheet fetch error: ${err.message}`);
     }
 }
