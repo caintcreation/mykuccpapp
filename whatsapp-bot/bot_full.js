@@ -8,7 +8,7 @@
    ============================================================ */
 
 'use strict';
-const { Client, LocalAuth } = require('whatsapp-web.js');
+const { Client, LocalAuth, NoAuth } = require('whatsapp-web.js');
 const puppeteer = require('puppeteer');
 const qrcode = require('qrcode-terminal');
 const axios = require('axios');
@@ -35,6 +35,7 @@ const CHECK_INTERVAL_MS = Number(process.env.CHECK_INTERVAL_MS || 30000);
 
 // Port for the keep-alive HTTP server (Render.com sets this automatically)
 const PORT = process.env.PORT || 3001;
+const isRender = Boolean(process.env.RENDER || process.env.RENDER_SERVICE_ID || process.env.RENDER_EXTERNAL_URL);
 
 // ─── Persistence ──────────────────────────────────────────────────
 const PROCESSED_FILE = 'processed_numbers.json';
@@ -128,8 +129,14 @@ const chromeExecutablePath = puppeteer.executablePath();
 console.log(`[${ts()}] Using Chrome executable: ${chromeExecutablePath}`);
 botStatus.phase = 'launching-browser';
 
+const authStrategy = isRender
+    ? new NoAuth()
+    : new LocalAuth({ dataPath: '.wwebjs_auth' });
+
+console.log(`[${ts()}] Using auth strategy: ${isRender ? 'NoAuth (Render)' : 'LocalAuth (local)'} `);
+
 const client = new Client({
-    authStrategy: new LocalAuth({ dataPath: '.wwebjs_auth' }),
+    authStrategy,
     puppeteer: {
         headless: true,
         executablePath: chromeExecutablePath,
