@@ -1,0 +1,5 @@
+node_modules/
+.wwebjs_auth/
+.wwebjs_cache/
+processed_numbers.json
+broadcasted_numbers.json

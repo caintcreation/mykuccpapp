@@ -5,78 +5,6 @@
 
 document.addEventListener('DOMContentLoaded', () => {
 
-    const kenyaData = {
-        "Baringo": ["Baringo Central", "Baringo North", "Baringo South", "Eldama Ravine", "Mogotio", "Tiaty"],
-        "Bomet": ["Bomet Central", "Bomet East", "Chepalungu", "Konoin", "Sotik"],
-        "Bungoma": ["Bumula", "Kabuchai", "Kanduyi", "Kimilili", "Mt Elgon", "Sirisia", "Tongaren", "Webuye East", "Webuye West"],
-        "Busia": ["Butula", "Funyula", "Matayos", "Nambale", "Teso North", "Teso South"],
-        "Elgeyo Marakwet": ["Keiyo North", "Keiyo South", "Marakwet East", "Marakwet West"],
-        "Embu": ["Manyatta", "Mbeere North", "Mbeere South", "Runyenjes"],
-        "Garissa": ["Dadaab", "Fafi", "Garissa Township", "Hulugho", "Ijara", "Lagdera", "Balambala"],
-        "Homa Bay": ["Homa Bay Town", "Kabondo Kasipul", "Karachuonyo", "Kasipul", "Mbita", "Ndhiwa", "Rangwe", "Suba"],
-        "Isiolo": ["Isiolo North", "Isiolo South", "Merti"],
-        "Kajiado": ["Kajiado Central", "Kajiado East", "Kajiado North", "Kajiado West", "Loitokitok"],
-        "Kakamega": ["Butere", "Khwisero", "Likuyani", "Lurambi", "Matungu", "Mumias East", "Mumias West", "Navakholo", "Shinyalu", "Ikolomani"],
-        "Kericho": ["Ainamoi", "Belgut", "Bureti", "Kipkelion East", "Kipkelion West", "Sigowet/Soin"],
-        "Kiambu": ["Gatundu North", "Gatundu South", "Githunguri", "Juja", "Kabete", "Kiambaa", "Kiambu Town", "Kikuyu", "Limuru", "Ruiru", "Thika Town", "Lari"],
-        "Kilifi": ["Ganze", "Kaloleni", "Kilifi North", "Kilifi South", "Magarini", "Malindi", "Rabai"],
-        "Kirinyaga": ["Kirinyaga Central", "Kirinyaga East", "Kirinyaga West", "Mwea East", "Mwea West"],
-        "Kisii": ["Bobasi", "Bomachoge Borabu", "Bomachoge Chache", "Bonchari", "South Mugirango", "Kitutu Chache North", "Kitutu Chache South", "Nyaribari Chache", "Nyaribari Masaba"],
-        "Kisumu": ["Kisumu Central", "Kisumu East", "Kisumu West", "Muhoroni", "Nyakach", "Nyando", "Seme"],
-        "Kitui": ["Kitui Central", "Kitui East", "Kitui Rural", "Kitui South", "Kitui West", "Mwingi Central", "Mwingi North", "Mwingi West"],
-        "Kwale": ["Kinango", "Lunga Lunga", "Matuga", "Msambweni"],
-        "Laikipia": ["Laikipia East", "Laikipia North", "Laikipia West"],
-        "Lamu": ["Lamu East", "Lamu West"],
-        "Machakos": ["Kathiani", "Machakos Town", "Masinga", "Matungulu", "Mavoko", "Mwala", "Yatta"],
-        "Makueni": ["Kaiti", "Kibwezi East", "Kibwezi West", "Kilome", "Makueni", "Mbooni"],
-        "Mandera": ["Banissa", "Lafey", "Mandera East", "Mandera North", "Mandera South", "Mandera West"],
-        "Marsabit": ["Laisamis", "Moyale", "North Horr", "Saku"],
-        "Meru": ["Buuri", "Igembe Central", "Igembe North", "Igembe South", "Imenti Central", "Imenti North", "Imenti South", "Tigania East", "Tigania West"],
-        "Migori": ["Awendo", "Kuria East", "Kuria West", "Nyatike", "Rongo", "Suna East", "Suna West", "Uriri"],
-        "Murang'a": ["Gatanga", "Kandara", "Kangema", "Kigumo", "Kiharu", "Mathioya", "Maragua"],
-        "Nairobi": ["Dagoretti North", "Dagoretti South", "Embakasi Central", "Embakasi East", "Embakasi North", "Embakasi South", "Embakasi West", "Kamukunji", "Kasarani", "Kibra", "Lang'ata", "Makadara", "Mathare", "Roysambu", "Ruaraka", "Starehe", "Westlands"],
-        "Nakuru": ["Bahati", "Gilgil", "Kuresoi North", "Kuresoi South", "Molo", "Naivasha", "Nakuru Town East", "Nakuru Town West", "Njoro", "Rongai", "Subukia"],
-        "Nandi": ["Aldai", "Chesumei", "Emgwen", "Mosop", "Nandi Hills", "Tindiret"],
-        "Narok": ["Narok East", "Narok North", "Narok South", "Narok West", "Emurua Dikirr", "Kilgoris"],
-        "Nyamira": ["Borabu", "North Mugirango", "West Mugirango"],
-        "Nyandarua": ["Kinangop", "Kipipiri", "Ol Kalou", "Ol Joro Orok", "Ndaragwa"],
-        "Nyeri": ["Kieni East", "Kieni West", "Mathira East", "Mathira West", "Mukurweini", "Nyeri Town", "Othaya", "Tetu"],
-        "Samburu": ["Samburu East", "Samburu North", "Samburu West"],
-        "Siaya": ["Alego Usonga", "Bondo", "Gem", "Rarieda", "Ugenya", "Ugunja"],
-        "Taita Taveta": ["Mwatate", "Taveta", "Voi", "Wundanyi"],
-        "Tana River": ["Bura", "Galole", "Garsen"],
-        "Tharaka Nithi": ["Chuka", "Igambang'ombe", "Maara", "Tharaka North", "Tharaka South"],
-        "Trans Nzoia": ["Cherangany", "Endebess", "Kiminini", "Kwanza", "Saboti"],
-        "Turkana": ["Loima", "Turkana Central", "Turkana East", "Turkana North", "Turkana South", "Turkana West"],
-        "Uasin Gishu": ["Ainabkoi", "Kapseret", "Kesses", "Moiben", "Soy", "Turbo"],
-        "Vihiga": ["Emuhaya", "Hamisi", "Luanda", "Sabatia", "Vihiga"],
-        "Wajir": ["Eldas", "Wajir East", "Wajir North", "Wajir South", "Wajir West", "Tarbaj"],
-        "West Pokot": ["Kacheliba", "Kapenguria", "Sigor", "Pokot South"]
-    };
-
-    // Populate Sub-county dropdown
-    const countySelect = document.getElementById('county');
-    const subCountySelect = document.getElementById('subcounty');
-
-    if (countySelect && subCountySelect) {
-        countySelect.addEventListener('change', () => {
-            const county = countySelect.value;
-            subCountySelect.innerHTML = '<option value="">— Select Sub County —</option>';
-
-            if (county && kenyaData[county]) {
-                kenyaData[county].forEach(sub => {
-                    const opt = document.createElement('option');
-                    opt.value = sub;
-                    opt.textContent = sub;
-                    subCountySelect.appendChild(opt);
-                });
-                subCountySelect.disabled = false;
-            } else {
-                subCountySelect.innerHTML = '<option value="">— Select County First —</option>';
-                subCountySelect.disabled = true;
-            }
-        });
-    }
 
     // =====================
     // 1. DARK MODE TOGGLE
@@ -187,6 +115,231 @@ document.addEventListener('DOMContentLoaded', () => {
     let activeSteps = [];
     let currentStepIndex = 0;
     let selectedService = '';
+    const applicationForm = document.getElementById('application-form');
+
+    function getField(name) {
+        return applicationForm ? applicationForm.querySelector(`[name="${name}"]`) : null;
+    }
+
+    function getFieldGroup(name) {
+        const field = getField(name);
+        return field ? field.closest('.form-group') : null;
+    }
+
+    function clearFieldValue(field) {
+        if (!field) return;
+        if (field.type === 'checkbox' || field.type === 'radio') {
+            field.checked = false;
+            return;
+        }
+        if (field.tagName === 'SELECT') {
+            field.selectedIndex = 0;
+            return;
+        }
+        if (field.type === 'file') {
+            field.value = '';
+            return;
+        }
+        field.value = '';
+    }
+
+    function setFieldState(name, visible, required) {
+        const field = getField(name);
+        const group = getFieldGroup(name);
+        if (!field || !group) return;
+
+        group.style.display = visible ? '' : 'none';
+
+        if (required) field.setAttribute('required', 'required');
+        else field.removeAttribute('required');
+
+        if (!visible) {
+            clearFieldValue(field);
+            field.classList.remove('error-field');
+            const errorEl = group.querySelector('.field-error');
+            if (errorEl) errorEl.classList.remove('show');
+        }
+    }
+
+    function normalizeRows(scope) {
+        if (!scope) return;
+        scope.querySelectorAll('.form-row').forEach(row => {
+            const visibleGroups = Array.from(row.querySelectorAll('.form-group'))
+                .filter(group => group.style.display !== 'none');
+            row.style.display = visibleGroups.length ? 'grid' : 'none';
+        });
+    }
+
+    function setRequiredState(names, required) {
+        names.forEach(name => {
+            const field = getField(name);
+            if (!field) return;
+            if (required) field.setAttribute('required', 'required');
+            else field.removeAttribute('required');
+        });
+    }
+
+    function applyPersonalFieldRules() {
+        const personalStep = allSteps.find(s => s.dataset.stepId === 'personal');
+        if (!personalStep) return;
+
+        const allPersonalFields = [
+            'fullname',
+            'id_number',
+            'phone',
+            'email'
+        ];
+
+        const byService = {
+            kuccps: {
+                visible: allPersonalFields,
+                required: ['fullname', 'id_number', 'phone']
+            },
+            helb: {
+                visible: allPersonalFields,
+                required: ['fullname', 'id_number', 'phone']
+            },
+            ecitizen: {
+                visible: allPersonalFields,
+                required: ['fullname', 'id_number', 'phone']
+            },
+            kmtc: {
+                visible: allPersonalFields,
+                required: ['fullname', 'id_number', 'phone']
+            },
+            kra: {
+                visible: allPersonalFields,
+                required: ['fullname', 'id_number', 'phone']
+            },
+            webdev: {
+                visible: ['fullname', 'phone', 'email'],
+                required: ['fullname', 'phone']
+            }
+        };
+
+        const rules = byService[selectedService] || byService.kuccps;
+        allPersonalFields.forEach(name => {
+            setFieldState(name, rules.visible.includes(name), rules.required.includes(name));
+        });
+
+        normalizeRows(personalStep);
+    }
+
+    function applyServiceStepRequiredRules() {
+        setRequiredState([
+            'index_number',
+            'kcse_year',
+            'school_name',
+            'kuccps_inst1',
+            'kuccps_inst2'
+        ], selectedService === 'kuccps');
+
+        setRequiredState([
+            'hef_inst_name',
+            'hef_course_name',
+            'parent_marital_status',
+            'helb_payment_mode'
+        ], selectedService === 'helb');
+
+        setRequiredState([
+            'kra_occupation',
+            'tax_obligation'
+        ], selectedService === 'kra');
+    }
+
+    function applyKuccpsTypeRules() {
+        const typeField = getField('kuccps_application_type');
+        const transferField = getField('kuccps_transfer_reason');
+        const transferGroup = getFieldGroup('kuccps_transfer_reason');
+        const supportField = getField('kuccps_support_doc_explanation');
+        const supportGroup = getFieldGroup('kuccps_support_doc_explanation');
+        if (!typeField || !transferField || !transferGroup) return;
+
+        const isTransfer = typeField.value === 'Transfer Application';
+
+        // Show/require reason text area
+        transferGroup.style.display = isTransfer ? '' : 'none';
+        if (isTransfer) transferField.setAttribute('required', 'required');
+        else transferField.removeAttribute('required');
+
+        if (!isTransfer) {
+            transferField.value = '';
+            transferField.classList.remove('error-field');
+            const err = transferGroup.querySelector('.field-error');
+            if (err) err.classList.remove('show');
+        }
+
+        // Show/require explanation text area
+        if (supportGroup && supportField) {
+            supportGroup.style.display = isTransfer ? '' : 'none';
+            if (!isTransfer) supportField.value = '';
+        }
+
+        // Show/require transfer support document upload
+        const docTransferGroup = document.querySelector('.doc_kuccps_transfer_group');
+        const docTransferInput = docTransferGroup ? docTransferGroup.querySelector('input[type="file"]') : null;
+        if (docTransferGroup && docTransferInput) {
+            docTransferGroup.style.display = isTransfer ? 'block' : 'none';
+            if (isTransfer) {
+                docTransferInput.setAttribute('required', 'required');
+            } else {
+                docTransferInput.removeAttribute('required');
+                docTransferInput.value = '';
+            }
+        }
+    }
+
+    function applyHelbPaymentRules() {
+        const modeField = getField('helb_payment_mode');
+        if (!modeField) return;
+
+        const isBank = modeField.value === 'Bank Account';
+        const isMpesa = modeField.value === 'M-PESA Payment';
+        ['helb_bank_account_number', 'helb_bank_name', 'helb_bank_branch'].forEach(name => {
+            setFieldState(name, isBank, isBank);
+        });
+        setFieldState('helb_mpesa_phone', isMpesa, isMpesa);
+
+        const guarantorStep = allSteps.find(s => s.dataset.stepId === 'guarantors');
+        normalizeRows(guarantorStep);
+    }
+
+    function applyEcitizenRules() {
+        const registrationField = getField('ecitizen_registration_type');
+        const passwordField = getField('ecitizen_existing_password');
+        const passwordGroup = getFieldGroup('ecitizen_existing_password');
+        if (!registrationField || !passwordField || !passwordGroup) return;
+
+        const isExisting = registrationField.value === 'Already Registered';
+        passwordGroup.style.display = isExisting ? '' : 'none';
+        if (isExisting) passwordField.setAttribute('required', 'required');
+        else passwordField.removeAttribute('required');
+
+        if (!isExisting) {
+            passwordField.value = '';
+            passwordField.classList.remove('error-field');
+        }
+
+        const ecitizenStep = allSteps.find(s => s.dataset.stepId === 'ecitizen');
+        normalizeRows(ecitizenStep);
+    }
+
+    function applyDynamicRules() {
+        applyPersonalFieldRules();
+        applyServiceStepRequiredRules();
+        applyKuccpsTypeRules();
+        applyHelbPaymentRules();
+        applyEcitizenRules();
+    }
+
+    const kuccpsTypeField = getField('kuccps_application_type');
+    if (kuccpsTypeField) kuccpsTypeField.addEventListener('change', applyKuccpsTypeRules);
+
+    const helbPaymentModeField = getField('helb_payment_mode');
+    if (helbPaymentModeField) helbPaymentModeField.addEventListener('change', applyHelbPaymentRules);
+
+    const ecitizenRegistrationField = getField('ecitizen_registration_type');
+    if (ecitizenRegistrationField) ecitizenRegistrationField.addEventListener('change', applyEcitizenRules);
 
     // Service Cards
     const serviceCards = document.querySelectorAll('.service-card');
@@ -212,6 +365,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 return;
             }
             buildActiveSteps();
+            applyDynamicRules();
             showStep(1);
         });
     }
@@ -226,15 +380,24 @@ document.addEventListener('DOMContentLoaded', () => {
         activeSteps.push(allSteps.find(s => s.dataset.stepId === 'service'));
         activeSteps.push(allSteps.find(s => s.dataset.stepId === 'personal'));
 
-        if (['kuccps', 'full'].includes(selectedService)) {
+        if (selectedService === 'kuccps') {
             activeSteps.push(allSteps.find(s => s.dataset.stepId === 'kuccps'));
         }
-        if (['helb', 'full'].includes(selectedService)) {
+        if (selectedService === 'helb') {
             activeSteps.push(allSteps.find(s => s.dataset.stepId === 'hef'));
             activeSteps.push(allSteps.find(s => s.dataset.stepId === 'guarantors'));
         }
-        if (['kra', 'full'].includes(selectedService)) {
+        if (selectedService === 'ecitizen') {
+            activeSteps.push(allSteps.find(s => s.dataset.stepId === 'ecitizen'));
+        }
+        if (selectedService === 'kmtc') {
+            activeSteps.push(allSteps.find(s => s.dataset.stepId === 'kmtc'));
+        }
+        if (selectedService === 'kra') {
             activeSteps.push(allSteps.find(s => s.dataset.stepId === 'kra'));
+        }
+        if (selectedService === 'webdev') {
+            activeSteps.push(allSteps.find(s => s.dataset.stepId === 'webdev'));
         }
         activeSteps.push(allSteps.find(s => s.dataset.stepId === 'documents'));
         activeSteps.push(allSteps.find(s => s.dataset.stepId === 'review'));
@@ -243,7 +406,7 @@ document.addEventListener('DOMContentLoaded', () => {
         document.querySelectorAll('[data-doc-req]').forEach(el => {
             const reqs = el.dataset.docReq.split(',');
             const fileInput = el.querySelector('input[type="file"]');
-            const visible = reqs.some(r => r === selectedService || selectedService === 'full');
+            const visible = reqs.includes(selectedService);
 
             // Special case for death certificate
             if (el.classList.contains('doc_death_cert_group')) {
@@ -271,6 +434,8 @@ document.addEventListener('DOMContentLoaded', () => {
         progressLabels.forEach(label => {
             label.style.display = activeIds.includes(label.dataset.stepId) ? 'inline-block' : 'none';
         });
+
+        applyDynamicRules();
     }
 
     function showStep(index) {
@@ -359,12 +524,12 @@ document.addEventListener('DOMContentLoaded', () => {
         // Phone validation
         const phoneField = step.querySelector('input[name="phone"]');
         if (phoneField && phoneField.value.trim() && phoneField.offsetParent !== null) {
-            const phonePattern = /^(?:\+254|0)\d{9}$/;
+            const phonePattern = /^(?:254|0)\d{9}$/;
             if (!phonePattern.test(phoneField.value.replace(/\s/g, ''))) {
                 phoneField.classList.add('error-field');
                 const phoneError = phoneField.parentElement.querySelector('.field-error');
                 if (phoneError) {
-                    phoneError.textContent = 'Enter a valid Kenyan phone number (e.g. 0712345678)';
+                    phoneError.textContent = 'Enter a valid Kenyan number WITHOUT the "+" sign (e.g. 0712345678 or 254712345678)';
                     phoneError.classList.add('show');
                 }
                 valid = false;
@@ -450,8 +615,6 @@ document.addEventListener('DOMContentLoaded', () => {
      */
     const SHEET_URL = 'https://script.google.com/macros/s/AKfycbyo5Z4vK92qmuvWyr8ZpGTNBscTxJyog0YDBXbGO25z8v7bSuc5ZHENmcIl-McCTmnxrQ/exec';
     const MAX_FILE_BYTES = 3 * 1024 * 1024; // 3 MB per file
-
-    const applicationForm = document.getElementById('application-form');
 
     applicationForm.addEventListener('submit', async (e) => {
         e.preventDefault();
@@ -586,8 +749,7 @@ document.addEventListener('DOMContentLoaded', () => {
             e.preventDefault();
             const svc = btn.getAttribute('data-svc');
             if (svc) {
-                const normalizedSvc = svc.replace('-package', '');
-                const matchCard = document.querySelector(`.service-card[data-service="${normalizedSvc}"]`);
+                const matchCard = document.querySelector(`.service-card[data-service="${svc}"]`);
                 if (matchCard) {
                     serviceCards.forEach(c => {
                         c.style.borderColor = '';
@@ -598,6 +760,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     selectedService = matchCard.dataset.service;
                     const errEl = document.getElementById('service-error');
                     if (errEl) errEl.classList.remove('show');
+                    applyDynamicRules();
                 }
             }
             document.getElementById('apply').scrollIntoView({ behavior: 'smooth', block: 'start' });
